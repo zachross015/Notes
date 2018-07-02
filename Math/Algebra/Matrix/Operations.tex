@@ -1,0 +1,158 @@
+\section{Matrix Operations}
+
+We will now define an priliminary set of operations that can be performed on a
+matrix of any size.
+
+Given two matrices, $A$ and $B$ of arbitrary sizes, we say that matrix $A$ and
+$B$ are equivalent if and only if 
+\begin{enumerate}
+    \item Their row counts and column counts are equal
+    \item $a_{ij} = b_{ij}$, for all $i$ in $m$ and all $j$ in $n$
+\end{enumerate}
+
+The addition of matrix $A$ and $B$ can only be done if their row counts and
+column counts are equal. It is performed as follows:
+\begin{equation}
+    A+B = 
+    \begin{bmatrix}
+        a_{11} + b_{11} & a_{12} + b_{12} & \ldots & a_{1n} + b_{1n} \\
+        a_{21} + b_{21} & a_{22} + b_{22} & \ldots & a_{2n} + b_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} + b_{m1} & a_{m2} + b_{m2} & \ldots & a_{mn} + b_{mn} \\
+    \end{bmatrix}
+\end{equation}
+
+The scalar multiplication of a matrix $A$ and a scalar $c$ is defined as
+\begin{equation}
+    cA = 
+    \begin{bmatrix}
+        c*a_{11} & c*a_{12} & \ldots & c*a_{1n} \\
+        c*a_{21} & c*a_{22} & \ldots & c*a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        c*a_{m1} & c*a_{m2} & \ldots & c*a_{mn} \\
+    \end{bmatrix}
+\end{equation}
+
+The multiplication of two matrices $A$ and $B$ can only be fulfilled under the
+condition that the column count of the initial matrix is equal to the row count
+of the multiplicant(e.g. $n_1 = m_2$). The resulting matrix will contain the row
+count of the initial matrix with the column count of the multiplicant. Each
+element of the matrix is determined by the summation of the corresponding row in
+the initial matrix, multiplied by the summation of the corresponding column in
+the multiplicant matrix.
+\begin{equation}
+    AB = 
+    \begin{bmatrix}
+        \sum_{i=1}^{n}a_{1i}\sum_{j=1}^{m}b_{j1} 
+        & \sum_{i=1}^{n}a_{1i}\sum_{j=1}^{m}b_{j2} 
+        & \ldots 
+        & \sum_{i=1}^{n}a_{1i}\sum_{j=1}^{m}b_{jn} \\
+        \sum_{i=1}^{n}a_{2i}\sum_{j=1}^{m}b_{j1} 
+        & \sum_{i=1}^{n}a_{2i}\sum_{j=1}^{m}b_{j2} 
+        & \ldots 
+        & \sum_{i=1}^{n}a_{2i}\sum_{j=1}^{m}b_{jn} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \sum_{i=1}^{n}a_{mi}\sum_{j=1}^{m}b_{j1} 
+        & \sum_{i=1}^{n}a_{mi}\sum_{j=1}^{m}b_{j2} 
+        & \ldots 
+        & \sum_{i=1}^{n}a_{mi}\sum_{j=1}^{m}b_{jn} \\
+    \end{bmatrix}
+\end{equation}
+This may be a little confusing to remember at a glance, so remember that its the
+sum of each row in the first matrix times the sum of each column in the second
+one. It is important to note that $AB \neq BA$. This is easily proved since the 
+column count of one matrix may not equal the row count of the other, even when
+the converse is equivalent.
+
+From any of these matrices, we can derive a set of properties that each matrix
+contains.
+\begin{enumerate}
+    \item $A+B=B+A$ [commutative]
+        \begin{proof}
+            Let $A$ and $B$ be matrices of arbitrary, but equivalent, sizes. The
+            addition of the two matrices is commutative because the addition of
+            each individual element of both matrices is commutative.
+        \end{proof}
+    \item $(A+B)+C=A+(B+C)$ [associative]
+        \begin{proof}
+            The associativity of each matrix is proved by the associativity of
+            its elements.
+        \end{proof}
+    \item $(AB)C=A(BC)$ [associative]
+        % TODO: Write a proof for this
+    \item $A(B+C)=AB+AC$ [distributive]
+        % TODO: Write a proof for this
+    \item $a(B+C)=aB+aC$ [scalar distributive]
+        % TODO: Write a proof for this
+    \item $(a+b)C=aC+bC$ [scalar distributive]
+        \begin{proof}
+            \begin{align*}
+                (a+b)C &=
+                \begin{bmatrix}
+                    (a+b)*c_{11} & (a+b)*c_{12} & \ldots & (a+b)*c_{1n} \\
+                    (a+b)*c_{21} & (a+b)*c_{22} & \ldots & (a+b)*c_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    (a+b)*c_{m1} & (a+b)*c_{m2} & \ldots & (a+b)*c_{mn} \\
+                \end{bmatrix} \\
+                &=
+                \begin{bmatrix}
+                    a*c_{11}+b*c_{11}
+                    & a*c_{12}+b*c_{12}
+                    & \ldots
+                    & a*c_{1n}+b*c_{1n} \\
+                    a*c_{21}+b*c_{21}
+                    & a*c_{22}+b*c_{22}
+                    & \ldots
+                    & a*c_{2n}+b*c_{2n} \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    a*c_{mn}+b*c_{mn}
+                    & a*c_{m1}+b*c_{m1} 
+                    & a*c_{m2}+b*c_{m2} 
+                    & \ldots 
+                    a*c_{mn}+b*c_{mn} \\
+                \end{bmatrix}\\
+                &= aC + bC
+            \end{align*}
+        \end{proof}
+    \item $(ab)C=a(bC)$ [scalar associative]
+        % TODO: Write a proof for this 
+    \item $(aB)C=a(BC)$ [scalar associative]
+        % TODO: Write a proof for this
+\end{enumerate}
+
+For any system of equations, we have the following theorem:
+\begin{theorem}\label{lesolutions}
+    Every system of linear equations either has
+    \begin{enumerate}
+        \item Infinite solutions,
+        \item Zero solutions,
+        \item or Exactly one solution
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Let $AX=B$ be a linear system. If it has no solutions, then the only
+    possibilities for a solution left are $1$ and $3$. Suppose the system has
+    two solutions, $X_1$ and $X_2$. Thus $AX_1=AX_2=\ldots=AX_n=B$.
+
+    Let $X_0=X_1-X_2\neq 0$. We can claim that $X_1+kX_0$ is a solution for all
+    $k \in \mathbb{R}$
+    \begin{align*}
+        A(X_1+kX_0)
+        &= AX_1+kAX_0 \\
+        &= B+kAX_0 \\
+        &= B+kA(X_1-X_2) \\
+        &= B+k(AX_1-AX_2) \\
+        &= B+k(B-B)\\
+        &= B+k(0)\\
+        &= B
+    \end{align*}
+\end{proof}
+
+Take for example the system of linear equations $x + y = 1$ and $2x + 2y =
+2$. Solving for $y$ in either case gives us the equation $y=-x + 1$, giving
+us an infinite set of solutions for this system of equations because the
+lines run parallel and coincide with one another. Another example would be
+the system of equations $y=x+1$ and $y=x+3$. Given a cursory look, it is
+obvious that there is no solution because the lines run parallel and never
+intersect.

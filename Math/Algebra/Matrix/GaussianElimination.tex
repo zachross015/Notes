@@ -1,0 +1,89 @@
+\section{Gaussian Elimination} \label{gaussianelimination}
+\emph{Guassian elimination} is a method of reducing a matrix to a form called the
+row-echlon form. The intention is to minimize the amount of variables before
+finding the solution to a system of equations. It uses a concept called \emph{Leading
+Ones}, which means the first non-zero entry is a one. The reduced row-echelon
+matrix is defined by a series of requisites:
+\begin{enumerate}
+    \item The first non-zero in any row is a one
+    \item If a row in the matrix contains all zeroes, that row must be on the
+        bottom.
+    \item Leading Ones move to the right. 
+    \item Above and below each leading one is a zero.
+\end{enumerate}
+The form is only considered reduced if the fourth condition is met.
+
+In order to find the reduced row-echlon matrix, there are a few elementary
+operations that can be performed on the matrix.
+\begin{enumerate}
+    \item Interchange two rows
+    \item Multiply a row by a non-zero constant
+    \item Add a multple of one row to another row
+\end{enumerate}
+Operations performed on the matrix affect all elements of the row, including the
+constant in the case that an augmented matrix is being used.  Once we have the
+reduced row-echelon matrix as an augmented matrix, we can convert this into a
+system of equations where we solve for each variable. Using a method called back
+substitution makes it much simpler. Back substitution is simply solving for
+leading variables by pluggin already identified values into
+each system.
+
+\begin{exmp}
+    Given the following matrix:
+    \begin{equation*}
+        \begin{bmatrix}[cccccc|c]
+            1 & 3 & -2 &  0 & 2 &  0 &  0 \\
+            2 & 6 & -5 & -2 & 4 & -3 & -1 \\
+            0 & 0 &  5 & 10 & 4 & 15 &  5 \\
+            2 & 6 &  0 &  8 & 4 & 18 &  6 \\
+        \end{bmatrix}
+    \end{equation*}
+    we want to try and find the solution to the system of equations that it
+    corresponds to. After implementing a few of the row reduction
+    operations, we end up with a matrix that looks more like this:
+    \begin{equation*}
+        \begin{bmatrix}[cccccc|c]
+            1 & 3 & -2 &  0 & 2 &  0 &  0           \\
+            0 & 0 &  1 &  2 & 0 &  3 &  1           \\
+            0 & 0 &  0 &  0 & 0 &  1 &  \frac{1}{3} \\
+            0 & 0 &  0 &  0 & 0 &  0 &  0           \\
+        \end{bmatrix}
+    \end{equation*}
+    With this new matrix, we can separate the variables into a set of equations. 
+    \begin{align*}
+        &x_1 &+ &3x_2 &- &2x_3 &+ &0    &+ &2x_5 &+ &0x_6 &= 0 \\
+        &0   &+ &0    &+ &x_3  &+ &2x_4 &+ &0    &+ &3x_6 &= 1 \\
+        &0   &+ &0    &+ &0    &+ &0    &+ &0    &+ &x_6  &= \frac{1}{3} \\
+        &0   &+ &0    &+ &0    &+ &0    &+ &0    &+ &0    &= 0 
+    \end{align*}
+    Removing the leading zeros, we get:
+    \begin{align*}
+        x_1 + 3x_2 - 2x_3 + 2x_5 = 0 \\
+        x_3 + 2x_4 + 3x_6 = 1 \\
+        x_6 = \frac{1}{3} \\
+    \end{align*}
+    From here, we want to try and reduce the set to as many unknowns as
+    possible. We begin by solving each equation for the least significant number
+    in the corresponding equation.
+    \begin{align*}
+        -3x_2 + 2x_3 - 2x_5 = x_1 \\
+        1 - 2x_4 - 3x_6 = x_3 \\
+        \frac{1}{3} = x_6 \\
+    \end{align*}
+    Now we can use back substitution to solve for the rest of the system, and
+    identify the unknowns.
+    \begin{align*}
+        x_1 = -3x_2 + -4x_4 - 2x_5 \\
+    \end{align*}
+    After solving, we are left with the non-leading variables $x_2$, $x_4$, and
+    $x_5$. These are the unkowns that our solution relies on. From this, we
+    identify the domains of the unknowns.
+    \begin{equation*}
+        x_2 = r, x_4 = s, x_5 = t \text{ for } r,s,t \in \mathbb{R}
+    \end{equation*}
+    Then plug it all in for the solution.
+    \begin{equation*}
+        x_1 = -3r - 4s - 2t
+    \end{equation*}
+\end{exmp}
+

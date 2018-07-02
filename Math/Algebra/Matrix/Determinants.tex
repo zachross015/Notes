@@ -1,0 +1,204 @@
+\section{Determinants}
+The \emph{determinant} of a matrix is effectively an indicator of certain
+properties that the matrix may hold. The determinant can only be taken from a
+square matrix. The way for finding the determinant of a square matrix is
+dependent on the size of it. A $2\times 2$ matrix, for example, will be taken as
+such:
+\begin{equation}\label{2det}
+    \det{(A)} = 
+    \det
+    \begin{vmatrix}
+        a & b \\
+        c & d
+    \end{vmatrix}
+    = ad - bc
+\end{equation}
+As this expands from a $3 \times 3$ to an $n \times n$ matrix, it becomes
+increasingly complex to try and implement this method. Instead we use a method
+of finding a lower order determinant recursively until we reach a $2 \times 2$
+matrix, which we can solve using the equation in (\ref{2det}). Adding together
+all of these lower order determinants will give us the determinant for the
+matrix. This lower order determinant is referred to as the \emph{minor} of a
+matrix $A$, which is the result of taking the determinant of a submatrix of $A$
+after having removed one column and one row. This as commonly shown as $M_{ij}$,
+where $i$ is the index of the removed row and $j$ is the index of the removed
+column. We then find the corresponding cofactor, shown as $C_{ij}$,
+which is obtained by multiplying the minor by $(-1)^{i+j}$. Finally, we multiply
+this by the value at the current index, i.e. $a_{ij}$ This method
+is known
+as
+a \emph{cofactor expansion}.
+
+\begin{exmp}
+Say we have a $3\times3$ matrix $A$.
+\begin{align*}
+    A &= 
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}\\
+        a_{31} & a_{32} & a_{33}
+    \end{bmatrix}
+\end{align*}
+Using cofactor expansion, we take the elements in a row or column and determine
+their cofactor using the equation
+\begin{equation}
+    C_{ij} = (-1)^{i+j}M_{ij}
+\end{equation}
+where $M$ is the first minor of $A$ after removing row $i$ and column $j$.
+So in picking the first row, we would effectively have the cofactors $M_{11}$,
+$-M_{12}$, and $M_{13}$.  
+
+We then take the sum of each cofactor, multiplied by the value at the chosen
+index.
+\begin{align*}
+    &a_{11}*C_{11} + 
+    a_{12}*C_{12} + 
+    a_{13}*C_{13} \\
+    &= a_{11}*M_{11} - 
+    a_{12}*M_{12} + 
+    a_{13}*M_{13} \\
+    &= a_{11}\det
+    \begin{vmatrix}
+        a_{22} & a_{23} \\
+        a_{32} & a_{33} 
+    \end{vmatrix}
+    - a_{12}\det
+    \begin{vmatrix}
+        a_{21} & a_{23} \\
+        a_{31} & a_{33} 
+    \end{vmatrix}
+    + a_{13}\det
+    \begin{vmatrix}
+        a_{21} & a_{22} \\
+        a_{31} & a_{32} 
+    \end{vmatrix}
+\end{align*}
+Now that we've reached a point where the minors are all determinants of $2
+\times 2$ matrices, we can finish out the equation using the equation in
+\ref{2det}.
+\begin{align*}
+    a_{11}(a_{22}a_{33}-a_{23}a_{32})
+    - a_{12}(a_{21}a_{33}-a_{23}a_{31})
+    + a_{13}(a_{21}a_{32}-a_{22}a_{31})
+\end{align*}
+\end{exmp}
+
+This method is commonly known as
+finding the \emph{determinant by induction}, which is stated as the determinant
+of a square matrix of a given order will be defined in terms of the next lower
+order. 
+
+Now you may be wondering, what would happen if we picked an element not in the
+first column or first row. This can be explained with a well established theorem
+\begin{theorem}
+    If $A$ is an $n\times n$ matrix, then regardless of which row or column of
+    $A$ is chosed, the number obtained by multiplying the entries in that row or
+    column by the corresponding cofactors and adding the resulting products is
+    always the same.
+\end{theorem}
+% TODO: Write a proof for this
+The proof for this is beyond my current understanding of the subject, so for now
+it is left as an excercise for the reader.
+
+Now we can look at the cases of determinants that apply to specific matrix
+types, and properties they may contain. Take the triangular matrix and find the
+determinant of it using the cofactor method we discussed earlier. You may notice
+that the most simple way to find the determinant would be to sequentially take
+the first indexed element for each series of the cofactor expansion, since then
+you would be expanding by zero multiple times. This brings up an important
+theorem
+\begin{theorem}
+    If $A$ is  an $n\times n$ triangular matrix, then $\det{(A)}$ is the product
+    of the entries on the main diagonal of the matrix.
+\end{theorem}
+\begin{proof}
+    Let $A$ be an $n\times n$ triangular matrix. By cofactor expansion, we can
+    find the determinant of the matrix. 
+    \begin{align*}
+        &\det
+        \begin{vmatrix}
+            a_{11} & a_{12} & a_{13} & \ldots & a_{1n} \\
+            0 & a_{22} & a_{23} & \ldots & a_{2n}  \\
+            0 & 0 & a_{33} & \ldots & a_{3n}  \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \ldots & a_{nn} \\
+        \end{vmatrix}\\
+        &= C_{11}*\det
+        \begin{vmatrix}
+            a_{22} & a_{23} & \ldots & a_{2n}  \\
+            0 & a_{33} & \ldots & a_{3n}  \\
+            \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & \ldots & a_{nn} \\
+        \end{vmatrix}\\
+        &= C_{11}*C_{22}*\det
+        \begin{vmatrix}
+            a_{33} & \ldots & a_{3n}  \\
+            \vdots & \ddots & \vdots \\
+            0 & \ldots & a_{nn} \\
+        \end{vmatrix}\\
+        &= C_{11}*C_{22}*\ldots*C_{nn}
+    \end{align*}
+\end{proof}
+
+As stated at the beginning of this section, the determinant is an indicator of
+many other things, but we have yet to explore any of those avenues. One of the
+things that we can notice from a matrix determinant is that it can indicate the
+amount of solutions a system of linear equations may have, if any at all. From
+this we have the theorem
+\begin{theorem}
+    If the determinant is not zero, then the system has exactly one solution.
+\end{theorem}
+\begin{proof}
+    Case: $a = 0$ and $b,c,d \neq 0$
+    \begin{equation*}
+        \begin{bmatrix}
+            0 & b \\
+            c & d
+        \end{bmatrix}
+        = \begin{bmatrix}
+            c & d \\
+            0 & b 
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & \frac{d}{c} \\
+            0 & b 
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & \frac{d}{c} \\
+            0 & 1  
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & 0 \\
+            0 & 1 
+        \end{bmatrix}
+    \end{equation*}
+    Case: $a,b,c,d \neq 0$
+    \begin{equation*}
+        \begin{bmatrix}
+            a & b \\
+            c & d
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & \frac{b}{a} \\
+            c & d 
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & \frac{b}{a} \\
+            0 & d-\frac{bc}{a}
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & \frac{b}{a} \\
+            0 & 1  
+        \end{bmatrix}
+        = \begin{bmatrix}
+            1 & 0 \\
+            0 & 1 
+        \end{bmatrix}
+    \end{equation*}
+\end{proof}
+
+\begin{theorem}
+    $\det{AB}=\det{A}\det{B}$
+\end{theorem}
+% TODO: Write a proof for this
+The proof for this is beyond my current understanding of the subject, so for now

@@ -1,0 +1,82 @@
+\section{Matrix Inversion}
+One of the mathematical properties that we have of scalar elements is the idea
+of an inverse. That is, for any scalar there is an element that, when multiplied
+by the scalar, will always be equivalent to the identity. In this case, the
+identity is 1. In For some scalar $k$, we represent the inserse as $k^{-1}$ or
+$\frac{1}{k}$.
+
+This can also be seen in matrices. Given some matrix $A$, we say that
+multiplying this by the corresponding inverse matrix $A^{-1}$ will always give us the
+identity matrix. 
+\begin{equation}
+    A*A^{-1}=I_n
+\end{equation}
+Note that although we are using the inverse representation of raising the matrix
+to $-1$, this is not equivalent to $\frac{1}{A}$.
+
+When looking at a matrix, it is not at all obvious how to go about converting it
+to its inverse. For this, we use a row reduction method with an augmented
+matrix. The left side of the initial matrix is the matrix to be inverted, while
+the right side of the it is the identity. From there we us a finite set of row
+reductions (listed in section \ref{gaussianelimination}) until the left side
+has taken the form of the identity matrix, which will render the right side of
+the matrix as the inverse.
+\begin{equation}
+    \begin{bmatrix}[c|c]
+        A & I
+    \end{bmatrix}=
+    \begin{bmatrix}[c|c]
+        I & A^{-1}
+    \end{bmatrix}
+\end{equation}
+This process can be long and tedious, so it is often important to make sure that
+the inverse exists before attempting to find it. The idea for this theorem is
+coined as the Equivalence theorem. Because of the extensiveness of this topic,
+it has been given its own section later on in the paper. For now, just know that
+it is considered good practice to make sure the inverse exists before trying to
+find it.
+
+\begin{exmp}
+    Given the following matrix, find its inverse.
+    \begin{align*}
+        \begin{bmatrix}
+            1 & 2  \\
+            -1 & 3  
+        \end{bmatrix}
+    \end{align*}
+    The first step, is to create an augmented matrix, using the identity as the
+    augemented portion of the matrix. Since the material for determining the
+    inverses existence is not covered until section \ref{equivalencetheorem},
+    the author has already determined that this matrix has an inverse. 
+    \begin{align*}
+        \begin{bmatrix}[cc|cc]
+            1 & 2 & 1 & 0 \\
+            -1 & 3 & 0 & 1 
+        \end{bmatrix}
+    \end{align*}
+    From here, all we have to do is perform a finite set of row reduction
+    operations until we reach the identity on the left side of the matrix.
+    \begin{align*}
+        =\begin{bmatrix}[cc|cc]
+            1 & 2 & 1 & 0 \\
+            0 & 5 & 1 & 1 
+        \end{bmatrix}
+        =\begin{bmatrix}[cc|cc]
+            1 & 2 & 1 & 0 \\
+            0 & 1 & \frac{1}{5} & \frac{1}{5}
+        \end{bmatrix}
+        =\begin{bmatrix}[cc|cc]
+            1 & 0 & \frac{3}{5} & -\frac{2}{5} \\
+            0 & 1 & \frac{1}{5} & \frac{1}{5}
+        \end{bmatrix}
+    \end{align*}
+    The final result is given on the right side of this augmented matrix. 
+    \begin{align*}
+        A^{-1}=
+        \begin{bmatrix}
+            \frac{3}{5} & -\frac{2}{5} \\
+            \frac{1}{5} & \frac{1}{5}
+        \end{bmatrix}
+    \end{align*}
+
+\end{exmp}

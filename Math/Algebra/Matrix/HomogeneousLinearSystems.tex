@@ -1,0 +1,35 @@
+\section{Homogeneous Linear Systems}
+A \emph{homogeneous linear system} is a system of linear equations for which all
+constant terms are zero. The property of having all constant terms equal to zero
+is called having the \emph{trivial solution}.  Such a system takes the form 
+\begin{equation}\label{homogeneousls}
+    \begin{split}
+        a_{11}x_1 + a_{12}x_2+&\ldots+a_{1n}x_n  = 0\\
+        a_{21}x_1 + a_{22}x_2+&\ldots+a_{2n}x_n  = 0\\
+                              &\vdots\\
+        a_{m1}x_1 + a_{m2}x_2+&\ldots+a_{mn}x_n  = 0\\
+    \end{split}
+\end{equation}
+This is equivalent to a matrix of the form 
+\begin{equation}
+    Ax = 0
+\end{equation}
+Where $A$ is an $m*n$ matrix, $x$ is a column vector with $n$ entries, and $0$
+is the zero vector with $m$ entries. Taking a closer look at the innate
+properties of a  homogeneous linear system and using Theorem \ref{lesolutions},
+it is apparent that there can only ever be one solution or infinite solutions.
+In other words, it makes the solution \emph{consistent}. It can not have zero
+solutions, since there will always be exactly as many solutions as unknowns, or
+more unknowns than solutions. In the event that the amount of solutions and
+unknowns are the same, it is easy to row reduce the elements into an identity
+matrix, which will result in exactly one solution for each unknown . When there
+are more unknowns than solutions, we have a set of uknowns that exist in the
+domain of all real numbers, so there are infinite possiblites for a solution.
+Putting it all together, we get the theorem
+\begin{theorem}\label{infsolutions}
+    A homogeneous linear system with more unknowns than equations has infinitely
+    many solutions.
+\end{theorem}
+% TODO: Write a proof for this
+The proof for this is beyond my current understanding of the subject, so for now
+it is left as an excercise for the reader.

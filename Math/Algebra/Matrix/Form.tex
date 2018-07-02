@@ -1,0 +1,71 @@
+\section{Matrix Form}
+A \emph{Matrix} is nothing more than a system of linear equations of which we
+can perform operations on.  Putting the system of linear equations into a matrix
+form is simple:
+\begin{equation}
+    \begin{bmatrix}
+        a_{11} & a_{12} & \ldots & a_{1n} \\
+        a_{21} & a_{22} & \ldots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \ldots & a_{mn} \\
+    \end{bmatrix}
+\end{equation}
+This is otherwise known as a \emph{coefficient matrix}, which is simply a matrix
+formed of coefficients. The form of a matrix is that there are $m$ rows and $n$
+columns, which is notated by $m * n$. It is important to note that in the
+notation of rows and columns in matrices, the row always comes before the column
+(e.g. $m$ before $n$).
+
+A standard coefficient matrix can be formed into an \emph{augmented matrix} by
+appending a column of constants to the matrix. The values used in this case are
+those of the $b$ constans that we used in $(2)$.
+\begin{equation}
+    \begin{bmatrix}[cccc|c]
+        a_{11} & a_{12} & \ldots & a_{1n} & b_1 \\
+        a_{21} & a_{22} & \ldots & a_{2n} & b_2 \\
+        \vdots & \vdots & \ddots & \vdots & \vdots \\
+        a_{m1} & a_{m2} & \ldots & a_{mn} & b_m \\
+    \end{bmatrix}
+\end{equation}
+The matrix mimics the notation of the coefficient matrix, with an an appended
+row to the end of the notation. Any augmented matrix will take the form of
+$m*(n+1)$.There are a few types of matrices that we will mention briefly, but will be
+discussed more in later sections. 
+
+The first of these is the \emph{zero matrix},
+which is simply a matrix of 0's. This is often represented as a single 0 in
+equations.
+\begin{equation}
+    0 = 
+    \begin{bmatrix}
+        0 & 0 & \ldots & 0 \\
+        0 & 0 & \ldots & 0  \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \ldots & 0 \\
+    \end{bmatrix}
+\end{equation}
+
+The next of these is the \emph{identity matrix}. This matrix works identically
+to how the number $1$ works in scalar operations, and is represented as a series
+of ones going down the \emph{main diagonal} of the matrix.
+\begin{equation}
+    I_n = 
+    \begin{bmatrix}
+        1 & 0 & \ldots & 0 \\
+        0 & 1 & \ldots & 0  \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \ldots & 1 \\
+    \end{bmatrix}
+\end{equation}
+
+We also have the \emph{triangular matrix} which is a matrix where all elements
+that reside below the main diagonal are zeros. 
+\begin{equation}
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} & \ldots & a_{1n} \\
+        0 & a_{22} & a_{23} & \ldots & a_{2n}  \\
+        0 & 0 & a_{33} & \ldots & a_{3n}  \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \ldots & a_{nn} \\
+    \end{bmatrix}
+\end{equation}
