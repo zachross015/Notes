@@ -31,3 +31,45 @@ space.
     \item There exists an identity vector, such that multiplying a vector by
         this identity will leave the vector unchanged. e.g. $1 * u = u$
 \end{enumerate}
+
+\begin{exmp}
+    We want to prove that the two dimensional vector space $V$ is a valid vector
+    space.  First off, we should establish what are the elements of the vector
+    we are evaluating.
+    \begin{equation*}
+        V = \mathbb{R}^2 = \{(x,y):x,y \in \mathbb{R} \}
+    \end{equation*}
+    Now this equation may be a little bit confusing, so let's take a look at
+    each part of it.
+
+    We are dealing with the vector space $V$, which is a collection of vectors
+    that exist in two dimensions. The notation of $\mathbb{R}$, or the domain of
+    all real numbers, is in itself a dimension that a vector can exist in. Since
+    this vector space is two dimensional, we show that by saying this is in
+    $\mathbb{R}*\mathbb{R}$ or $\mathbb{R}^2$. 
+
+    The final part serves as a rule for what can exist in the
+    vector space. A verbose version of this is that $x$ and $y$ must satisfy the
+    constraint of $(x,y)$ for all $x$ and $y$ in the domain of all real numbers.
+    In this situation, this is not much of a constraint, as it can be satisfied
+    by all real numbers.
+
+    We are then left with proving this, which comes quite simply. We take two
+    independent and abstract vectors $u$ and $v$ in $V$, with values $(a,b)$ and
+    $(c,d)$ respectively. By addition, we have
+    \begin{equation*}
+        u + v = (a + c, b + d) \in V
+    \end{equation*}
+    Since the addition of $a$ and $c$, and $b$ and $d$, all still exist in
+    $\mathbb{R}$, the addition property holds true.
+
+    For multiplication, we use the abstract vector $u$ from before, and an
+    abstract scalar $k$ that exists in $\mathbb{R}$. Then
+    \begin{equation*}
+        ku = (ka, kb) \in V
+    \end{equation*}
+
+    The rest of the axiums can be easily proven after these two arguments have
+    been satisfied.
+\end{exmp}
+

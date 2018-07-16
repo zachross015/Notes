@@ -1,0 +1,74 @@
+\section{Subspaces}\label{subspaces}
+
+Within a vector space, we have the possibility of the vector space containting a
+\emph{subspace}, which is a vector space that is a subset of another vector
+space. A subscpace is notated using the same notation as a subset. Given a
+vector space $V$ and a subscpace $U$, we represent this as such.
+\begin{equation*}
+    U \subseteq V
+\end{equation*}
+
+Proving that a subset is a subspace is almost the same as proving that it is a
+vector space to begin with. We must establish that the vector space follows the
+axioms defined in section \ref{generalvectorspaces}, and that their results
+exist in their own vector space as well as the superspace.
+
+\begin{exmp}
+    Given a three dimensional vector space $V$ and a two dimensional vector
+    space $W$, we want to prove that $W$ is a subspace of $V$.
+    \begin{align*}
+        &V = \mathbb{R}^3 = \{(x,y,z): x,y,z \in \mathbb{R}\}\\
+        &W = \mathbb{R}^2 = \{(x,y): x,y \in \mathbb{R}\}
+    \end{align*}
+    This example has a fairly simple solution since we can think of $W$ as the
+    three dimensional vector space using a constant $0$ as the third dimension.
+    In other words, $W$ will be the $x$ and $y$ planes in $\mathbb{R}^3$.
+    \begin{align*}
+        &V = \mathbb{R}^3 = \{(x,y,z): x,y,z \in \mathbb{R}\}\\
+        &W = \mathbb{R}^3 = \{(x,y,0): x,y \in \mathbb{R}\}
+    \end{align*}
+    Because we know that $\mathbb{R}^3$ is vector space already, this concludes
+    the proof of the equation. 
+    \begin{equation*}
+        W \subseteq V
+    \end{equation*}
+\end{exmp}
+
+By the logic used in this example, we can also show that each dimension of real
+numbers is a subspace of one higher dimension. E.g.
+\begin{equation*}
+    \mathbb{R}^1 \subseteq \mathbb{R}^2 \subseteq \hdots \subseteq
+    \mathbb{R}^\infty
+\end{equation*}
+
+\begin{exmp}
+    Given $V$ a vector space of all continuous functions on $(-\infty ,
+    \infty)$ and a vector space of all polynomials $P$, prove that $P
+    \subseteq V$.
+
+    This solution is a little trickier than the last, but still simple enough.
+    Say we have two polynomial functions $p, q$ and some constant $k$, where the
+    polynomial functions are
+    \begin{align*}
+        p(x) = a_0 + a_1x +a_2x^2 + \hdots + a_nx^n\\
+        q(x) = b_0 + b_1x +b_2x^2 + \hdots + b_nx^n
+    \end{align*}
+    To prove the continuity, we first show that $p, q$ are additive. Because the
+    addition of two polynomial functions is still in the vector space of all
+    polynomial functions, we are only evaluating whether or not a polynomial can
+    exist in the domain of all continuous functions. The result of multiplying a
+    polynomial by a scalar has the same effect, and therefore the result is
+    within the domain of polynomials. Now, we are just proving that a polynomial
+    exists in the domain of all continuous functions.
+    \begin{align*}
+        \lim_{x \to m} f(x) = \lim_{x \to m} (a_0 + a_1x +a_2x^2 + \hdots +
+        a_nx^n)\\
+        lim_{x \to m } a_0 
+        + lim_{x \to m } a_1x 
+        + lim_{x \to m } a_2x^2 
+        + \hdots 
+        + lim_{x \to m } a_nx^n
+    \end{align*}
+    This is of the form $a_0 + m^n$. Because the value of $n$ never goes below
+    $0$, this function is always continuous.
+\end{exmp}
